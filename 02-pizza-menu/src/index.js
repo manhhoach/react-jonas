@@ -65,32 +65,50 @@ function Header() {
 }
 
 function Menu() {
+    const pizzas = pizzaData;
+    const numsPizza = pizzas.length;
     return <main className="menu">
         <h2>Our menu</h2>
-        <Pizza name='Pizza Spinaci' ingredients='Tomato, mozarella, spinach, rico tta cheese' photo='pizzas/spinaci.jpg' price='100' />
-        <Pizza name='Pizza Spinaci' ingredients='Tomato, mozarella, spinach, ricotta cheese' photo='pizzas/spinaci.jpg' price='100' />
-
-        <Pizza name='Pizza Spinaci' ingredients='Tomato, mozarella, spinach, ricotta cheese' photo='pizzas/spinaci.jpg' price='100' />
-
-        <Pizza name='Pizza Spinaci' ingredients='Tomato, mozarella, spinach, ricotta cheese' photo='pizzas/spinaci.jpg' price={105} />
+        {numsPizza > 0 && (<ul className="pizzas">
+            {
+                pizzaData.map(
+                    pizza => <Pizza pizza={pizza} key={pizza.name} />
+                )
+            }
+        </ul>)
+        }
 
     </main>
 }
 
-function Pizza(props) {
-    return <div className="pizza">
+function Pizza(data) {
+    let props = data.pizza;
+    return <li className="pizza">
         <div>
-            <img src={props.photo} alt={props.name} />
+            <img src={props.photoName} alt={props.name} />
             <h3>{props.name}</h3>
             <p>{props.ingredients}</p>
-            <span>{+props.price+3}</span>
+            <span>{+props.price + 3}</span>
         </div>
 
-    </div>
+    </li>
 }
 
 function Footer() {
-    return <footer className="footer">{new Date().toLocaleTimeString()} || We're currently open</footer>
+    const hour = new Date().getHours()
+    const isOpen = hour < 24;
+
+    return <footer className="footer"> {
+        isOpen && (
+            <div className="order">
+                <p>Come visit us or order online</p>
+                <button className="btn">Order</button>
+            </div>
+
+        )
+
+
+    } </footer>
     //  return React.createElement('footer', null,  'We\'re currently open')
 }
 

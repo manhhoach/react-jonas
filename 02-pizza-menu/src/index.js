@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import './index.css'
 
-const pizzaData = [
+let pizzaData = [
     {
         name: "Focaccia",
         ingredients: "Bread with italian olive oil and rosemary",
@@ -66,29 +66,36 @@ function Header() {
 
 function Menu() {
     const pizzas = pizzaData;
-    const numsPizza = pizzas.length;
+    let numsPizza = pizzas.length;
     return <main className="menu">
         <h2>Our menu</h2>
-        {numsPizza > 0 && (<ul className="pizzas">
-            {
-                pizzaData.map(
-                    pizza => <Pizza pizza={pizza} key={pizza.name} />
-                )
-            }
-        </ul>)
+        {numsPizza > 0 ? (
+            <React.Fragment>
+                <p>Authentic Italian cuisine. 6 creative dishes to choose from. All from our stoen oven, all organic, all delicious.</p>
+                <ul className="pizzas">
+                    {
+                        pizzaData.map(
+                            pizza => <Pizza pizzaObj={pizza} key={pizza.name} />
+                        )
+                    }
+                </ul>
+            </React.Fragment>
+
+        )
+            : <p>Please come back later</p>
         }
 
     </main>
 }
 
-function Pizza(data) {
-    let props = data.pizza;
-    return <li className="pizza">
+function Pizza({ pizzaObj }) {
+   // if (pizzaObj.soldOut) return null;
+    return <li className={`pizza ${pizzaObj.soldOut ? 'sold-out' : ''}`}>
         <div>
-            <img src={props.photoName} alt={props.name} />
-            <h3>{props.name}</h3>
-            <p>{props.ingredients}</p>
-            <span>{+props.price + 3}</span>
+            <img src={pizzaObj.photoName} alt={pizzaObj.name} />
+            <h3>{pizzaObj.name}</h3>
+            <p>{pizzaObj.ingredients}</p>
+            <span>{ pizzaObj.soldOut === true ? 'sold out' :+pizzaObj.price}</span>
         </div>
 
     </li>
@@ -99,20 +106,19 @@ function Footer() {
     const isOpen = hour < 24;
 
     return <footer className="footer"> {
-        isOpen && (
-            <div className="order">
-                <p>Come visit us or order online</p>
-                <button className="btn">Order</button>
-            </div>
-
-        )
+        isOpen ? <Order closeHour={hour} /> : <p>Sorry</p>
 
 
-    } </footer>
+    } </footer >
     //  return React.createElement('footer', null,  'We\'re currently open')
 }
 
-
+function Order({ closeHour }) {
+    return <div className="order">
+        <p>We're open until {closeHour}:00. Come visit us or order online</p>
+        <button className="btn">Order</button>
+    </div>
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<React.StrictMode> <App /></React.StrictMode>)

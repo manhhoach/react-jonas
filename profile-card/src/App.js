@@ -1,3 +1,37 @@
+import "./style.css";
+
+const skills = [
+  {
+    skill: "HTML+CSS",
+    level: "advanced",
+    color: "#2662EA"
+  },
+  {
+    skill: "JavaScript",
+    level: "advanced",
+    color: "#EFD81D"
+  },
+  {
+    skill: "Web Design",
+    level: "advanced",
+    color: "#C3DCAF"
+  },
+  {
+    skill: "Git and GitHub",
+    level: "intermediate",
+    color: "#E84F33"
+  },
+  {
+    skill: "React",
+    level: "advanced",
+    color: "#60DAFB"
+  },
+  {
+    skill: "Svelte",
+    level: "beginner",
+    color: "#FF3B00"
+  }
+];
 function App() {
   return (
     <div className="card">
@@ -25,17 +59,15 @@ function Introduce(prop) {
 
 function SkillList(prop) {
   return <div className='skill-list'>
-    <Skill skill="React" color='blue'/>
-    <Skill skill="HTML CSS" color='red'/>
-    <Skill skill="Node.js" color='green'/>
-    <Skill skill="HTML CSS" color='violet'/>
-    <Skill skill="Node.js" color='yellow'/>
+    {skills.map((sk, i) => <Skill key={i} skill={sk} ></Skill>)}
   </div>
 }
 
-function Skill(prop) {
-  return <div className='skill' style={{backgroundColor: prop.color}}>
+function Skill(data) {
+  let prop = data.skill;
+  return <div className='skill' style={{ backgroundColor: prop.color }}>
     <span>{prop.skill}</span>
+    <span>{prop.level}</span>
   </div>
 }
 

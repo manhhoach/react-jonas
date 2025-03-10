@@ -1,0 +1,64 @@
+{
+  "cities": [
+    {
+      "cityName": "Berlin",
+      "country": "Germany",
+      "emoji": "🇩🇪",
+      "date": "2027-02-12T09:24:11.863Z",
+      "notes": "Amazing 😃",
+      "position": {
+        "lat": 52.53586782505711,
+        "lng": 13.376933665713324
+      },
+      "id": "98443197"
+    },
+    {
+      "id": "ba0a",
+      "cityName": "Castello de la Plana",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2025-03-06T15:10:49.436Z",
+      "notes": "ok",
+      "position": {
+        "lat": "40.01591464708541",
+        "lng": "-0.009441375732421877"
+      }
+    },
+    {
+      "id": "9716",
+      "cityName": "Kyritz",
+      "country": "Germany",
+      "emoji": "🇩🇪",
+      "date": "2025-03-06T15:11:20.347Z",
+      "notes": "",
+      "position": {
+        "lat": "52.96683795483366",
+        "lng": "12.414550781250002"
+      }
+    },
+    {
+      "id": "cb28",
+      "cityName": "Hanoi",
+      "country": "Viet Nam",
+      "emoji": "🇻🇳",
+      "date": "2025-03-06T15:11:32.235Z",
+      "notes": "",
+      "position": {
+        "lat": "20.7663868125152",
+        "lng": "105.85327148437501"
+      }
+    },
+    {
+      "id": "9275",
+      "cityName": "Puygouzon",
+      "country": "France",
+      "emoji": "🇫🇷",
+      "date": "2025-03-06T15:12:34.388Z",
+      "notes": "",
+      "position": {
+        "lat": "43.88205730390537",
+        "lng": "2.1752929687500004"
+      }
+    }
+  ]
+}

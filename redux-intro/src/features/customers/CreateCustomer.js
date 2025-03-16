@@ -12,6 +12,8 @@ function Customer() {
       return
     }
     dispatch(createCustomer(fullName, nationalId))
+    setFullName('')
+    setNationalId('')
   }
 
   return (

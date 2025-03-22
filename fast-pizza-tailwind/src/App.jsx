@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-
+import { action as updateOrderAction } from './features/order/UpdateOrder'
 import Home from './ui/Home';
 import Error from './ui/Error';
 import Menu, { loader as menuLoader } from './features/menu/Menu';
@@ -37,6 +37,7 @@ const router = createBrowserRouter([
         element: <Order />,
         loader: orderLoader,
         errorElement: <Error />,
+        action: updateOrderAction
       },
     ],
   },
